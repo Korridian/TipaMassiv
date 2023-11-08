@@ -1,0 +1,41 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int[,] array = new int[4, 5];
+
+        // Ввод значений в массив
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                Console.Write($"Введите значение для ячейки [{i},{j}]: ");
+                array[i, j] = int.Parse(Console.ReadLine());
+            }
+        }
+
+        /// Помещение строк
+        for (int i = 0; i < 2; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                int temp = array[i, j];
+                array[i, j] = array[3 - i, j];
+                array[3 - i, j] = temp;
+            }
+        }
+
+        /// Вывод двумерного массива после изменения строк
+        Console.WriteLine("Массив после перестановки строк:");
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                Console.Write(array[i, j] + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+}
